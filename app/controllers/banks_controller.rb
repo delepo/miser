@@ -42,7 +42,7 @@ class BanksController < ApplicationController
   def update
     respond_to do |format|
       if @bank.update(bank_params)
-        format.html { redirect_to @bank, notice: 'Bank was successfully updated. ' }
+        format.html { redirect_to @bank, notice: 'Bank was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

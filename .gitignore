@@ -14,3 +14,4 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+.settings/org.eclipse.core.resources.prefs

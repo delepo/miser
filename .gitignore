@@ -15,3 +15,4 @@
 /log/*.log
 /tmp
 .settings/org.eclipse.core.resources.prefs
+Gemfile.lock

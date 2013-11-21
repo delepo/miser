@@ -1,7 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Bank.delete_all
+Bank.create!(name: 'LCL Pontoise', address:'10, place de l''Hôtel de ville 95300 Pontoise', bank_code: '30002', branch_code: '06235')
+Bank.create!(name: 'Boursorama', address:'18, quai du point du jour 92100 Boulogne-Billancourt', bank_code: '30056', branch_code: '00050')

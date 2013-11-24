@@ -3,6 +3,12 @@ require 'test_helper'
 class BanksControllerTest < ActionController::TestCase
   setup do
     @bank = banks(:one)
+    @update = {
+      name: 'the bank',
+      address: 'the address',
+      bank_code: 'the bank code',
+      branch_code: 'the branch code'
+    }
   end
 
   test "should get index" do
@@ -18,7 +24,7 @@ class BanksControllerTest < ActionController::TestCase
 
   test "should create bank" do
     assert_difference('Bank.count') do
-      post :create, bank: { address: @bank.address, bank_code: @bank.bank_code, branch_code: @bank.branch_code, name: @bank.name }
+      post :create, bank: @update
     end
 
     assert_redirected_to bank_path(assigns(:bank))
@@ -35,7 +41,7 @@ class BanksControllerTest < ActionController::TestCase
   end
 
   test "should update bank" do
-    patch :update, id: @bank, bank: { address: @bank.address, bank_code: @bank.bank_code, branch_code: @bank.branch_code, name: @bank.name }
+    patch :update, id: @bank, bank: @update
     assert_redirected_to bank_path(assigns(:bank))
   end
 

@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
+  
 one:
   name: MyString
   address: MyString
@@ -11,3 +11,9 @@ two:
   address: MyString
   bank_code: MyString
   branch_code: MyString
+
+laposte:
+  name: La Poste Paris
+  address: 12, avenue de la liberté
+  bank_code: 000001
+  branch_code: 12345

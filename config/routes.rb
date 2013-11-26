@@ -1,4 +1,6 @@
 Miser::Application.routes.draw do
+  resources :accounts
+
   get "welcome/index"
   resources :banks
 

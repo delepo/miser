@@ -11,12 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126224927) do
+ActiveRecord::Schema.define(version: 20131127182853) do
 
   create_table "accounts", force: true do |t|
     t.integer  "bank_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "code"
+    t.decimal  "balance",    default: 0.0
   end
 
   add_index "accounts", ["bank_id"], name: "index_accounts_on_bank_id"

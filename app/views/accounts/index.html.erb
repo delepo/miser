@@ -3,6 +3,9 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Balance</th>
       <th>Bank</th>
       <th></th>
       <th></th>
@@ -13,6 +16,9 @@
   <tbody>
     <% @accounts.each do |account| %>
       <tr>
+        <td><%= account.name %></td>
+        <td><%= account.code %></td>
+        <td><%= account.balance %></td>
         <td><%= account.bank %></td>
         <td><%= link_to 'Show', account %></td>
         <td><%= link_to 'Edit', edit_account_path(account) %></td>

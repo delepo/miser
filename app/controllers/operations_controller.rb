@@ -69,6 +69,6 @@ class OperationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def operation_params
-      params.require(:operation).permit(:account_id, :transfer_account_id, :amount, :type)
+      params.require(:operation).permit(:account_id, :date, :transfer_account_id, :amount, :transaction_type)
     end
 end

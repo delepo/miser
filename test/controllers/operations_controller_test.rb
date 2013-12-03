@@ -18,7 +18,7 @@ class OperationsControllerTest < ActionController::TestCase
 
   test "should create operation" do
     assert_difference('Operation.count') do
-      post :create, operation: { account_id: @operation.account_id, amount: @operation.amount, transfer_account_id: @operation.transfer_account_id, transaction_type: @operation.transaction_type }
+      post :create, operation: { account_id: @operation.account_id, date: @operation.date, amount: @operation.amount, transfer_account_id: @operation.transfer_account_id, transaction_type: @operation.transaction_type }
     end
 
     assert_redirected_to operation_path(assigns(:operation))
@@ -35,7 +35,7 @@ class OperationsControllerTest < ActionController::TestCase
   end
 
   test "should update operation" do
-    patch :update, id: @operation, operation: { account_id: @operation.account_id, amount: @operation.amount, transfer_account_id: @operation.transfer_account_id, transaction_type: @operation.transaction_type }
+    patch :update, id: @operation, operation: { account_id: @operation.account_id, date: @operation.date, amount: @operation.amount, transfer_account_id: @operation.transfer_account_id, transaction_type: @operation.transaction_type }
     assert_redirected_to operation_path(assigns(:operation))
   end
 

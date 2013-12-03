@@ -1,6 +1,7 @@
 class BanksController < ApplicationController
   before_action :set_bank, only: [:show, :edit, :update, :destroy]
-
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_bank
+  
   # GET /banks
   # GET /banks.json
   def index
@@ -70,5 +71,10 @@ class BanksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def bank_params
       params.require(:bank).permit(:name, :address, :bank_code, :branch_code)
+    end
+    
+    def invalid_bank
+      logger.error "Attempt to access invalid bank #{params[:id]}"
+      redirect_to welcome_url, notice: 'Invalid bank'
     end
 end

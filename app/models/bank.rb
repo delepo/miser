@@ -2,8 +2,7 @@ class Bank < ActiveRecord::Base
   has_many :accounts
   before_destroy :ensure_not_referenced_by_any_account
 
-  validates :name, presence: true
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: true
   validates :bank_code, uniqueness: true
 
   private

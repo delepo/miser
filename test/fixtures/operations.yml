@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  account_id:
+  date: 01/01/1990 
+  transfer_account_id: 
+  amount: 9.99
+  transaction_type: 1
+
+two:
+  account_id: 
+  date: 01/01/1990 
+  transfer_account_id: 
+  amount: 9.99
+  transaction_type: 1

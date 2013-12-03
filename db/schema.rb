@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127182853) do
+ActiveRecord::Schema.define(version: 20131202230818) do
 
   create_table "accounts", force: true do |t|
     t.integer  "bank_id"
@@ -29,6 +29,26 @@ ActiveRecord::Schema.define(version: 20131127182853) do
     t.string   "address"
     t.string   "bank_code"
     t.string   "branch_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "operations", force: true do |t|
+    t.integer  "account_id"
+    t.integer  "transfer_account_id"
+    t.decimal  "amount"
+    t.integer  "transaction_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "date"
+  end
+
+  add_index "operations", ["account_id"], name: "index_operations_on_account_id"
+  add_index "operations", ["transfer_account_id"], name: "index_operations_on_transfer_account_id"
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

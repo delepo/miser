@@ -1,18 +1,23 @@
 Miser::Application.routes.draw do
-  resources :users
-
-  resources :operations
-
-  resources :accounts
-
   get "welcome/index"
-  resources :banks
-
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+  
+  scope '(:locale)' do
+    resources :banks
+    resources :accounts
+    resources :operations
+    resources :users
+    root 'welcome#index', as: 'welcome', via: :all    
+  end  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index', as: 'welcome'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

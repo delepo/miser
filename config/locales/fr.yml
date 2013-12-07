@@ -19,16 +19,25 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+fr:
   layouts:
     application:
       title:              "Miser"
-      menu_banks:         "Banks"
-      menu_accounts:      "Accounts"
+      menu_banks:         "Banques"
+      menu_accounts:      "Comptes"
       menu_operations:    "Operations"
-      menu_users:         "Users"
+      menu_users:         "Utitisateurs"
       
   banks:
     index:
-      name:               "Name"
+      name:               "Nom"
       
+  activerecord:
+    errors:
+      messages:
+        blank:            "ne peut pas être vide"
+    models:
+      account:            "compte"
+    attributes:
+      account:
+        name:             "Nom"

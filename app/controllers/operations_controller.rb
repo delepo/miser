@@ -15,6 +15,7 @@ class OperationsController < ApplicationController
   # GET /operations/new
   def new
     @operation = Operation.new
+    @operation.transaction_type = 0;
   end
 
   # GET /operations/1/edit

@@ -6,5 +6,5 @@ class Operation < ActiveRecord::Base
   validates :date, presence: true
   validates :transaction_type, presence: true
 
-  TRANSACTION_TYPES = {"EXPENDITURE" => 0, "INCOME" => 1, "TRANSFER" => 2}
+  TRANSACTION_TYPES = {'EXPENDITURE' => 0, 'INCOME' => 1, 'TRANSFER' => 2}
 end

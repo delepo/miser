@@ -1,12 +1,12 @@
-<h1>Listing banks</h1>
+<h1><%= Bank.model_name.human(count: 2) %></h1>
 
 <table>
 	<thead>
 		<tr>
-			<th><%= t('.name') %></th>
-			<th>Address</th>
-			<th>Bank code</th>
-			<th>Branch code</th>
+			<th><%= Bank.human_attribute_name('name') %></th>
+			<th><%= Bank.human_attribute_name('address') %></th>
+			<th><%= Bank.human_attribute_name('bank_code') %></th>
+			<th><%= Bank.human_attribute_name('branch_code') %></th>
 			<th></th>
 			<th></th>
 			<th></th>
@@ -19,9 +19,9 @@
 			<td><%= bank.address %></td>
 			<td><%= bank.bank_code %></td>
 			<td><%= bank.branch_code %></td>
-			<td><%= link_to 'Show', bank %></td>
-			<td><%= link_to 'Edit', edit_bank_path(bank) %></td>
-			<td><%= link_to 'Destroy', bank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<td><%= link_to t('general.show'), bank %></td>
+			<td><%= link_to t('general.edit'), edit_bank_path(bank) %></td>
+			<td><%= link_to t('general.destroy'), bank, method: :delete, data: { confirm: t('general.are_you_sure') } %></td>
 		</tr>
 		<% end %>
 	</tbody>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Bank', new_bank_path %>
+<%= link_to t('.new'), new_bank_path %>

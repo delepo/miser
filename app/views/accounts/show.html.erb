@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= Account.human_attribute_name('name') + t('general.colon') %></strong>
   <%= @account.name %>
 </p>
 
 <p>
-  <strong>Code:</strong>
+  <strong><%= Account.human_attribute_name('code') + t('general.colon') %></strong>
   <%= @account.code %>
 </p>
 
 <p>
-  <strong>Balance:</strong>
+  <strong><%= Account.human_attribute_name('balance') + t('general.colon') %></strong>
   <%= @account.balance %>
 </p>
 
 <p>
-  <strong>Bank:</strong>
+  <strong><%= Account.human_attribute_name('bank') + t('general.colon') %></strong>
   <%= @account.bank.name %>
 </p>
 
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<%= link_to t('general.edit'), edit_account_path(@account) %> |
+<%= link_to t('general.back'), accounts_path %>

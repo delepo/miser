@@ -1,12 +1,12 @@
-<h1>Listing accounts</h1>
+<h1><%= Account.model_name.human(count: 2) %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Balance</th>
-      <th>Bank</th>
+      <th><%= Account.human_attribute_name('name') %></th>
+      <th><%= Account.human_attribute_name('code') %></th>
+      <th><%= Account.human_attribute_name('balance') %></th>
+      <th><%= Account.human_attribute_name('bank') %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,9 +20,9 @@
         <td><%= account.code %></td>
         <td><%= account.balance %></td>
         <td><%= account.bank.name %></td>
-        <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
-        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('general.show'), account %></td>
+        <td><%= link_to t('general.edit'), edit_account_path(account) %></td>
+        <td><%= link_to t('general.destroy'), account, method: :delete, data: { confirm: t('general.are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Account', new_account_path %>
+<%= link_to t('.new'), new_account_path %>

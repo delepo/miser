@@ -14,8 +14,8 @@
   <div class="field">
     <%= f.label :transaction_type %><br>
     <% Operation::TRANSACTION_TYPES.each do |key, value| %>
-    <%= f.radio_button :transaction_type, value %>
-    <%= f.label key %><br>
+      <%= f.radio_button :transaction_type, value %>
+      <%= f.label key, t("operations.transaction_type.#{key.downcase}") %><br>
     <% end %>
     </br>
   </div>

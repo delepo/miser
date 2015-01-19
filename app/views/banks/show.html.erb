@@ -3,24 +3,24 @@
 <% end %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= Bank.human_attribute_name('name') + t('general.colon') %></strong>
   <%= @bank.name %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong><%= Bank.human_attribute_name('address') + t('general.colon') %></strong>
   <%= @bank.address %>
 </p>
 
 <p>
-  <strong>Bank code:</strong>
+  <strong><%= Bank.human_attribute_name('bank_code') + t('general.colon') %></strong>
   <%= @bank.bank_code %>
 </p>
 
 <p>
-  <strong>Branch code:</strong>
+  <strong><%= Bank.human_attribute_name('branch_code') + t('general.colon') %></strong>
   <%= @bank.branch_code %>
 </p>
 
-<%= link_to 'Edit', edit_bank_path(@bank) %> |
-<%= link_to 'Back', banks_path %>
+<%= link_to t('general.edit'), edit_bank_path(@bank) %> |
+<%= link_to t('general.back'), banks_path %>

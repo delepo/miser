@@ -1,13 +1,13 @@
-<h1>Listing operations</h1>
+<h1><%= Operation.model_name.human(count: 2) %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Account</th>
-      <th>Date</th>
-      <th>Transfer account</th>
-      <th>Amount</th>
-      <th>Transaction type</th>
+      <th><%= Operation.human_attribute_name('account') %></th>
+      <th><%= Operation.human_attribute_name('date') %></th>
+      <th><%= Operation.human_attribute_name('transfer_account') %></th>
+      <th><%= Operation.human_attribute_name('amount') %></th>
+      <th><%= Operation.human_attribute_name('transaction_type') %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,12 +19,11 @@
       <tr>
         <td><%= operation.account %></td>
         <td><%= operation.date %></td>
-        <td><%= operation.transfer_account %></td>
         <td><%= operation.amount %></td>
         <td><%= operation.transaction_type %></td>
-        <td><%= link_to 'Show', operation %></td>
-        <td><%= link_to 'Edit', edit_operation_path(operation) %></td>
-        <td><%= link_to 'Destroy', operation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('general.show'), operation %></td>
+        <td><%= link_to t('general.edit'), edit_operation_path(operation) %></td>
+        <td><%= link_to t('general.destroy'), operation, method: :delete, data: { confirm: t('general.are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Operation', new_operation_path %>
+<%= link_to t('.new'), new_operation_path %>

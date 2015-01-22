@@ -1,6 +1,6 @@
 class Operation < ActiveRecord::Base
   belongs_to :account
-  belongs_to :transfer_account
+  belongs_to :transfer_account, :class_name => 'Account'
 
   validates :amount, presence: true
   validates :date, presence: true

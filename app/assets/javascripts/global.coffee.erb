@@ -1,0 +1,12 @@
+# Global declarations, common to all pages
+$(document).on 'page:change', ->
+  $.datepicker.setDefaults({
+    showOn: "button",
+    buttonImageOnly: true,
+    buttonImage: '<%= image_path("calendar.gif") %>',
+    buttonText: "Calendar"
+  });
+  $.datepicker.setDefaults($.datepicker.regional[$('#_locale').val()])
+  $("input[as='datepicker']").datepicker()
+
+

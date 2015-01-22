@@ -1,4 +1,18 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-$(selector).datepicker($.datepicker.regional['fr-FR']);
+class OperationApp
+  constructor: ->
+    @bindEvents()
+    @toggleTransferDiv()
+
+  bindEvents: ->
+    $("input[name='operation[transaction_type]']").change(@toggleTransferDiv)
+
+  toggleTransferDiv: (e) ->
+    type = $("input[name='operation[transaction_type]']:checked").val()
+    if "2" == type
+      $("#transferDiv").show()
+    else
+      $("#transferDiv").hide()
+
+$(document).on 'ready page:load', ->
+  app = new OperationApp() if $(".operations.new").length
+  

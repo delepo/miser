@@ -13,18 +13,8 @@
 </p>
 
 <p>
-  <strong>Transfer account:</strong>
-  <%= @operation.transfer_account.name %>
-</p>
-
-<p>
   <strong>Amount:</strong>
   <%= @operation.amount %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @operation.transaction_type %>
 </p>
 
 <%= link_to 'Edit', edit_operation_path(@operation) %> |

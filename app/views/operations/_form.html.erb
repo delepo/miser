@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :transaction_type %><br>
-    <% Operation::TRANSACTION_TYPES.each do |key, value| %>
-      <%= f.radio_button :transaction_type, value %>
-      <%= f.label key, t("operations.transaction_type.#{key.downcase}") %><br>
+    <%= label_tag :transaction_type, t('.transaction_type') %><br>
+    <% OperationsController::TransactionType.each do |key, value| %>
+      <%= radio_button_tag :transaction_type, value, value == @transaction_type %>
+      <%= label_tag value, t("operations.transaction_type.#{key.downcase}") %><br>
     <% end %>
     </br>
   </div>
@@ -24,8 +24,8 @@
     <%= f.collection_select(:account_id, Account.all, :id, :name) %>
   </div>
   <div id="transferDiv" class="field">
-    <%= f.label :transfer_account %><br>
-    <%= f.collection_select(:transfer_account_id, Account.all, :id, :name) %>
+    <%= label_tag :transfer_account, t('.transfer_account') %><br>
+    <%= collection_select(:transfer_account, :id, Account.all, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :date %><br>

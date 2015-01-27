@@ -2,7 +2,23 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Welcome#index</h1>
-<p>
-	Find me in app/views/welcome/index.html.erb
-</p>
+<h1><%= t('layouts.application.menu_welcome') %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Account.human_attribute_name('name') %></th>
+      <th><%= t('.final_balance') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Account.all.each do |account| %>
+      <tr>
+        <td><%= account.name %></td>
+        <td><%= account.final_balance %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

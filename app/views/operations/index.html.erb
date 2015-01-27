@@ -5,9 +5,7 @@
     <tr>
       <th><%= Operation.human_attribute_name('account') %></th>
       <th><%= Operation.human_attribute_name('date') %></th>
-      <th><%= Operation.human_attribute_name('transfer_account') %></th>
       <th><%= Operation.human_attribute_name('amount') %></th>
-      <th><%= Operation.human_attribute_name('transaction_type') %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,9 +17,7 @@
       <tr>
         <td><%= operation.account.name %></td>
         <td><%= operation.date %></td>
-        <td><%= operation.transfer_account.name %></td>
         <td><%= operation.amount %></td>
-        <td><%= t("operations.transaction_type.#{Operation::TRANSACTION_TYPES.index(operation.transaction_type).downcase}") %></td>
         <td><%= link_to t('general.show'), operation %></td>
         <td><%= link_to t('general.edit'), edit_operation_path(operation) %></td>
         <td><%= link_to t('general.destroy'), operation, method: :delete, data: { confirm: t('general.are_you_sure') } %></td>

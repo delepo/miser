@@ -16,10 +16,10 @@
 			<div id="side">
 				<ul>
           <li><%= link_to t('.menu_welcome'), welcome_path %></li>
-          <li><%= link_to t('.menu_banks'), banks_path %></li>
-          <li><%= link_to t('.menu_accounts'), accounts_path %></li>
-          <li><%= link_to t('.menu_operations'), operations_path %></li>
-          <li><%= link_to t('.menu_users'), users_path %></li>
+          <li><%= link_to t(Bank.model_name.human(count: 2)), banks_path %></li>
+          <li><%= link_to t(Account.model_name.human(count: 2)), accounts_path %></li>
+          <li><%= link_to t(Operation.model_name.human(count: 2)), operations_path %></li>
+          <li><%= link_to t(User.model_name.human(count: 2)), users_path %></li>
 				</ul>
 			</div>
 			<div id="main">

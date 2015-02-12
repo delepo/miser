@@ -2,7 +2,7 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1><%= t('layouts.application.menu_welcome') %></h1>
+<h1><%= t('navigation.welcome') %></h1>
 
 <table>
   <thead>
@@ -16,7 +16,7 @@
     <% Account.all.each do |account| %>
       <tr>
         <td><%= account.name %></td>
-        <td><%= account.final_balance %></td>
+        <td class='text-right'><%= number_to_currency(account.final_balance) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -138,7 +138,7 @@ class OperationsController < ApplicationController
         @transaction_type = TransactionType::INCOME
       else
         @transaction_type = TransactionType::EXPENDITURE
-      end      
+      end
     end
 
     def operation_params(transaction_type = nil)

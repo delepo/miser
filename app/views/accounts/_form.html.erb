@@ -28,6 +28,7 @@
     <%= f.collection_select(:bank_id, Bank.all, :id, :name) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'button' %>
+    <%= link_to t('general.cancel'), accounts_path, class: 'button' %>
   </div>
 <% end %>

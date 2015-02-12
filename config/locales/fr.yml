@@ -20,6 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
+  number:
+    currency:
+      format:
+        unit: '€'
+        delimiter: ','
+        separator: '.'
+        precision: 2
+        format: '%n %u'
+
   helpers:
     # This will be the default ones, will take effect if no other
     # are specifically defined for the models.
@@ -34,6 +43,7 @@ fr:
         update:           "Modifier la banque"
 
   general:
+    cancel:               "Annuler"
     back:                 "Retour"
     show:                 "Voir"
     edit:                 "Modifier"
@@ -41,10 +51,11 @@ fr:
     are_you_sure:         "Etes-vous sûr ?"
     colon:                " : "
 
-  layouts:
-    application:
-      title:              "Miser"
-      menu_welcome:       "Accueil"
+  navigation:
+    title:                "Miser"
+    welcome:              "Accueil"
+    menu:
+      administration:   "Administration"
 
   banks:
     index:

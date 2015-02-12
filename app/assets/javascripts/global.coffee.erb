@@ -1,5 +1,7 @@
 # Global declarations, common to all pages
 $(document).on 'page:change', ->
+  # Foundation must be called in each page load
+  $(document).foundation()
   $.datepicker.setDefaults({
     showOn: "button",
     buttonImageOnly: true,
@@ -8,5 +10,3 @@ $(document).on 'page:change', ->
   });
   $.datepicker.setDefaults($.datepicker.regional[$('#_locale').val()])
   $("input[as='datepicker']").datepicker()
-
-

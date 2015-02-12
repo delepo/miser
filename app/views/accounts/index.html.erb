@@ -18,7 +18,7 @@
       <tr>
         <td><%= account.name %></td>
         <td><%= account.code %></td>
-        <td><%= account.balance %></td>
+        <td class='text-right'><%= number_to_currency(account.balance) %></td>
         <td><%= account.bank.name %></td>
         <td><%= link_to t('general.show'), account %></td>
         <td><%= link_to t('general.edit'), edit_account_path(account) %></td>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to t('.new'), new_account_path %>
+<%= link_to t('.new'), new_account_path, class: 'button' %>

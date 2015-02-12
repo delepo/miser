@@ -14,8 +14,8 @@
 
 <p>
   <strong>Amount:</strong>
-  <%= @operation.amount %>
+  <%= number_to_currency(@operation.amount) %>
 </p>
 
-<%= link_to 'Edit', edit_operation_path(@operation) %> |
-<%= link_to 'Back', operations_path %>
+<%= link_to t('general.edit'), edit_operation_path(@operation) %> |
+<%= link_to t('general.back'), operations_path %>

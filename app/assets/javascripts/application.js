@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require jquery-ui/datepicker
 //= require jquery-ui/datepicker-fr
 //= require jquery-ui/datepicker-de

@@ -28,7 +28,8 @@
       <%= f.password_field :password_confirmation, size: 40 %>
     </div>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit class: 'button' %>
+      <%= link_to t('general.cancel'), users_path, class: 'button' %>
     </div>
   </fieldset>
 

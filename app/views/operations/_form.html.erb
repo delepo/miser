@@ -36,7 +36,8 @@
     <%= f.text_field :amount %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'button' %>
+    <%= link_to t('general.cancel'), operations_path, class: 'button' %>
   </div>
 <% end %>
 

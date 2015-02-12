@@ -12,7 +12,7 @@
 
 <p>
   <strong><%= Account.human_attribute_name('balance') + t('general.colon') %></strong>
-  <%= @account.balance %>
+  <%= number_to_currency(@account.balance) %>
 </p>
 
 <p>

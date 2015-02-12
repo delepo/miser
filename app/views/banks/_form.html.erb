@@ -28,6 +28,7 @@
     <%= f.text_field :branch_code %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'button' %>
+    <%= link_to t('general.cancel'), banks_path, class: 'button' %>
   </div>
 <% end %>

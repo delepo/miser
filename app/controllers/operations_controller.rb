@@ -23,7 +23,12 @@ class OperationsController < ApplicationController
   # GET /operations
   # GET /operations.json
   def index
-    @operations = Operation.all
+    if params[:account]
+      @account = Account.find(params[:account])
+      @operations = @account.operations
+    else
+      @operations = Operation.all
+    end
   end
 
   # GET /operations/1
@@ -34,8 +39,14 @@ class OperationsController < ApplicationController
   # GET /operations/new
   def new
     @transaction_type = TransactionType::EXPENDITURE
-    @operation = Operation.new
-    @transfer_account = Account.new
+    @operation = Operation.new(date: Time.now)
+    if params[:account]
+      @account = Account.find(params[:account])
+      @operation.account = @account
+      @transfer_account = Account.all_except(@account).order(:name).first
+    else
+      @transfer_account = Account.order(:name).first
+    end
   end
 
   # GET /operations/1/edit
@@ -54,15 +65,20 @@ class OperationsController < ApplicationController
   def create
     @transaction_type = params[:transaction_type].to_i
     @operation = Operation.new(operation_params)
-    @transfer_operation = Operation.new(transfer_operation_params) if (TransactionType::TRANSFER == @transaction_type)
+    if (TransactionType::TRANSFER == @transaction_type) 
+      @transfer_operation = Operation.new(transfer_operation_params)
+      @transfer_account = @transfer_operation.account
+    end 
     saved = false
-    Operation.transaction do
-      saved = @operation.save
-      if (saved && @transfer_operation)
-        @transfer_operation.transfer_operation = @operation
-        saved &= @transfer_operation.save
-        if (saved)
-          saved &= @operation.update transfer_operation: @transfer_operation
+    if valid?
+      Operation.transaction do
+        saved = @operation.save
+        if (saved && @transfer_operation)
+          @transfer_operation.transfer_operation = @operation
+          saved &= @transfer_operation.save
+          if (saved)
+            saved &= @operation.update transfer_operation: @transfer_operation
+          end
         end
       end
     end
@@ -83,24 +99,26 @@ class OperationsController < ApplicationController
   def update
     new_transaction_type = params[:transaction_type].to_i
     saved = false
-    Operation.transaction do
-      if (@transaction_type == new_transaction_type) || (@transaction_type != TransactionType::TRANSFER && new_transaction_type != TransactionType::TRANSFER)
-        saved = @operation.update(operation_params(new_transaction_type))
-        saved &= @operation.transfer_operation.update(transfer_operation_params) if saved && (TransactionType::TRANSFER == @transaction_type)
-      elsif @transaction_type == TransactionType::TRANSFER
-        @transfer_operation = @operation.transfer_operation
-        @operation.transfer_operation = nil;        
-        saved = @operation.update(operation_params(new_transaction_type))
-        @transfer_operation.destroy
-        @transfer_operation = nil
-      elsif new_transaction_type == TransactionType::TRANSFER
-        saved = @operation.update(operation_params(new_transaction_type))
-        if saved
-          @transfer_operation = Operation.new(transfer_operation_params)
-          @transfer_operation.transfer_operation = @operation
-          saved &= @transfer_operation.save
-          if (saved)
-            saved &= @operation.update transfer_operation: @transfer_operation
+    if valid?    
+      Operation.transaction do
+        if (@transaction_type == new_transaction_type) || (@transaction_type != TransactionType::TRANSFER && new_transaction_type != TransactionType::TRANSFER)
+          saved = @operation.update(operation_params(new_transaction_type))
+          saved &= @operation.transfer_operation.update(transfer_operation_params) if saved && (TransactionType::TRANSFER == @transaction_type)
+        elsif @transaction_type == TransactionType::TRANSFER
+          @transfer_operation = @operation.transfer_operation
+          @operation.transfer_operation = nil;        
+          saved = @operation.update(operation_params(new_transaction_type))
+          @transfer_operation.destroy
+          @transfer_operation = nil
+        elsif new_transaction_type == TransactionType::TRANSFER
+          saved = @operation.update(operation_params(new_transaction_type))
+          if saved
+            @transfer_operation = Operation.new(transfer_operation_params)
+            @transfer_operation.transfer_operation = @operation
+            saved &= @transfer_operation.save
+            if (saved)
+              saved &= @operation.update transfer_operation: @transfer_operation
+            end
           end
         end
       end
@@ -120,9 +138,11 @@ class OperationsController < ApplicationController
   # DELETE /operations/1
   # DELETE /operations/1.json
   def destroy
+    account = @operation.account
+    @operation.transfer_operation.destroy if @operation.transfer_operation
     @operation.destroy
     respond_to do |format|
-      format.html { redirect_to operations_url }
+      format.html { redirect_to account_operations_url(account) }
       format.json { head :no_content }
     end
   end
@@ -153,5 +173,11 @@ class OperationsController < ApplicationController
 
     def transfer_operation_params
       {account_id: params[:transfer_account][:id], amount: params[:operation][:amount].to_f, date: params[:operation][:date]}
+    end
+
+    def valid?
+      valid = params[:transaction_type].to_i != TransactionType::TRANSFER || params[:operation][:account_id] != params[:transfer_account][:id]
+      @operation.errors[:transfer_account] << t('.bad_transfer_account') unless valid
+      valid
     end
   end

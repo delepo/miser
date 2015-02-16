@@ -3,19 +3,19 @@
 <% end %>
 
 <p>
-  <strong>Account:</strong>
+  <strong><%= Operation.human_attribute_name('account') + t('general.colon') %></strong>
   <%= @operation.account.name %>
 </p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @operation.date %>
+  <strong><%= Operation.human_attribute_name('date') + t('general.colon') %></strong>
+  <%= l(@operation.date) %>
 </p>
 
 <p>
-  <strong>Amount:</strong>
+  <strong><%= Operation.human_attribute_name('amount') + t('general.colon') %></strong>
   <%= number_to_currency(@operation.amount) %>
 </p>
 
 <%= link_to t('general.edit'), edit_operation_path(@operation) %> |
-<%= link_to t('general.back'), operations_path %>
+<%= link_to t('general.back'), account_operations_path(@operation.account) %>

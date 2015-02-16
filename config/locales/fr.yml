@@ -29,6 +29,10 @@ fr:
         precision: 2
         format: '%n %u'
 
+  date:
+    formats:
+      default: "%d/%m/%Y"
+
   helpers:
     # This will be the default ones, will take effect if no other
     # are specifically defined for the models.
@@ -50,6 +54,7 @@ fr:
     destroy:              "Supprimer"
     are_you_sure:         "Etes-vous sûr ?"
     colon:                " : "
+    error:                "erreur"
 
   navigation:
     title:                "Miser"
@@ -68,6 +73,8 @@ fr:
       notice:             "Banque créée"
     update:
       notice:             "Banque modifiée"
+    form:
+      error:              "sur cette banque"
   accounts:
     index:
       new:                "Nouveau compte"
@@ -79,17 +86,23 @@ fr:
       notice:             "Compte créé"
     update:
       notice:             "Compte modifié"
+    form:
+      error:              "sur ce compte"
   operations:
     index:
       new:                "Nouvelle opération"
+      balance:            "Solde"
     new:
       title:              "Création d'opération"
     edit:
       title:              "Modification d'opération"
     create:
       notice:             "Opération créée"
+      bad_transfer_account: "ne peut pas être identique au compte source"
     update:
       notice:             "Opération modifiée"
+    form:
+      error:              "sur cette opération"
     transaction_type:
       expenditure:        "Dépense"
       income:             "Revenu"
@@ -99,6 +112,11 @@ fr:
     errors:
       messages:
         blank:            "ne peut pas être vide"
+      models:
+        operation:               
+          attributes:
+            amount:
+              greater_than_or_equal_to: "est inférieur au minimum"
     models:
       account:            
         one:              "Compte"
@@ -116,7 +134,7 @@ fr:
       account:
         name:             "Nom"
         code:             "Code"
-        balance:          "Solde"
+        balance:          "Solde initial"
         bank:             "Banque"
       bank:
         name:             "Nom"

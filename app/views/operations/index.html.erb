@@ -6,6 +6,7 @@
       <th><%= Operation.human_attribute_name('account') %></th>
       <th><%= Operation.human_attribute_name('date') %></th>
       <th><%= Operation.human_attribute_name('amount') %></th>
+      <th><%= t('.balance') %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,8 +17,9 @@
     <% @operations.each do |operation| %>
       <tr>
         <td><%= operation.account.name %></td>
-        <td><%= operation.date %></td>
-        <td class='text-right'><%=  number_to_currency(operation.amount) %></td>
+        <td><%= l(operation.date) %></td>
+        <td class='text-right'><%= number_to_currency(operation.amount) %></td>
+        <td class='text-right'><%= number_to_currency(operation.account.balance_until_operation(operation)) %></td>
         <td><%= link_to t('general.show'), operation %></td>
         <td><%= link_to t('general.edit'), edit_operation_path(operation) %></td>
         <td><%= link_to t('general.destroy'), operation, method: :delete, data: { confirm: t('general.are_you_sure') } %></td>
@@ -28,4 +30,4 @@
 
 <br>
 
-<%= link_to t('.new'), new_operation_path, class: 'button' %>
+<%= link_to t('.new'), new_account_operation_path(@account), class: 'button' %>

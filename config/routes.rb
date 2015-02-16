@@ -1,5 +1,4 @@
 Miser::Application.routes.draw do
-  get "welcome/index"
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
@@ -10,8 +9,10 @@ Miser::Application.routes.draw do
     resources :banks
     resources :accounts
     resources :operations
+    get "/account_operations/:account", to: "operations#index", as: "account_operations"
+    get "/account_operations/new/:account", to: "operations#new", as: "new_account_operation"
     resources :users
-    root 'welcome#index', as: 'welcome', via: :all    
+    root 'welcome#index', as: 'welcome', via: :all
   end  
   
   # The priority is based upon order of creation: first created -> highest priority.

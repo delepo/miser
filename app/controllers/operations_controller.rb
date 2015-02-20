@@ -82,7 +82,6 @@ class OperationsController < ApplicationController
         end
       end
     end
-
     respond_to do |format|
       if saved
         format.html { redirect_to @operation, notice: 'Operation was successfully created.' }

@@ -12,6 +12,6 @@ class BankTest < ActiveSupport::TestCase
   test "bank name must be unique" do
     bank = Bank.new(name: banks(:laposte).name, address: "une adresse", bank_code: "2345", branch_code: "12345")
     assert bank.invalid?
-    assert_equal [I18n.translate('errors.messages.taken')], bank.errors[:name]
+    assert_equal [I18n.translate('activerecord.errors.messages.taken')], bank.errors[:name]
   end
 end

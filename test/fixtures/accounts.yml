@@ -2,8 +2,8 @@
 
 one:
   name: account1
-  bank_id: 
+  bank: one
 
 two:
   name: account2
-  bank_id: 
+  bank: two

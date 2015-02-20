@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150122153045) do
 
-  create_table "accounts", force: true do |t|
+  create_table "accounts", force: :cascade do |t|
     t.integer  "bank_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150122153045) do
 
   add_index "accounts", ["bank_id"], name: "index_accounts_on_bank_id"
 
-  create_table "banks", force: true do |t|
+  create_table "banks", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
     t.string   "bank_code"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150122153045) do
     t.datetime "updated_at"
   end
 
-  create_table "operations", force: true do |t|
+  create_table "operations", force: :cascade do |t|
     t.integer  "account_id"
     t.integer  "transfer_operation_id"
     t.decimal  "amount"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150122153045) do
 
   add_index "operations", ["account_id"], name: "index_operations_on_account_id"
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
     t.datetime "created_at"

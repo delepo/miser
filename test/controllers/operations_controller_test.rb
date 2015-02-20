@@ -6,21 +6,20 @@ class OperationsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, account: @operation.account
     assert_response :success
     assert_not_nil assigns(:operations)
   end
 
   test "should get new" do
-    get :new
+    get :new, account: @operation.account
     assert_response :success
   end
 
   test "should create operation" do
     assert_difference('Operation.count') do
-      post :create, operation: { account_id: @operation.account_id, date: @operation.date, amount: @operation.amount, transfer_account_id: @operation.transfer_account_id, transaction_type: @operation.transaction_type }
+      post :create, transaction_type: 0, operation: {account_id: @operation.account, date: @operation.date, amount: @operation.amount }
     end
-
     assert_redirected_to operation_path(assigns(:operation))
   end
 
@@ -35,7 +34,7 @@ class OperationsControllerTest < ActionController::TestCase
   end
 
   test "should update operation" do
-    patch :update, id: @operation, operation: { account_id: @operation.account_id, date: @operation.date, amount: @operation.amount, transfer_account_id: @operation.transfer_account_id, transaction_type: @operation.transaction_type }
+    patch :update, id: @operation, operation: { account_id: @operation.account_id, date: @operation.date, amount: @operation.amount, transfer_operation_id: @operation.transfer_operation_id }
     assert_redirected_to operation_path(assigns(:operation))
   end
 
@@ -43,7 +42,6 @@ class OperationsControllerTest < ActionController::TestCase
     assert_difference('Operation.count', -1) do
       delete :destroy, id: @operation
     end
-
-    assert_redirected_to operations_path
+    assert_redirected_to account_operations_path(@operation.account)
   end
 end

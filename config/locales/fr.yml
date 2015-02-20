@@ -112,8 +112,9 @@ fr:
     errors:
       messages:
         blank:            "ne peut pas être vide"
+        taken:            "est déjà utilisé"
       models:
-        operation:               
+        operation:
           attributes:
             amount:
               greater_than_or_equal_to: "est inférieur au minimum"

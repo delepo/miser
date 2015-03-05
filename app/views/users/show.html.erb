@@ -1,9 +1,5 @@
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
-
 <p>
-  <strong>Name:</strong>
+  <strong><%= User.human_attribute_name('name') + t('general.colon') %></strong>
   <%= @user.name %>
 </p>
 

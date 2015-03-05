@@ -13,11 +13,14 @@
   </head>
 
   <body class='<%= controller.controller_name %> <%= action_name %>'>
-  	<%= render 'shared/navigation' %>
-		<%= hidden_field_tag '_locale', I18n.locale %>
-		<div id="main">
+  	<header>
+      <%= render 'shared/navigation' if authenticated? %>
+  		<%= hidden_field_tag '_locale', I18n.locale %>
+    </header>
+		<main role="main">
+      <%= render 'shared/messages' %>
     	<%= yield %>
-    </div>
+    </main>
   </body>
 </html>
 

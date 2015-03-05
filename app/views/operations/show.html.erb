@@ -1,7 +1,3 @@
-<% if notice %>
-  <p id="notice"><%= notice %></p>
-<% end %>
-
 <p>
   <strong><%= Operation.human_attribute_name('account') + t('general.colon') %></strong>
   <%= @operation.account.name %>

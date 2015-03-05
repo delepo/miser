@@ -27,7 +27,7 @@ fr:
         delimiter: ','
         separator: '.'
         precision: 2
-        format: '%n %u'
+        format: '%n&nbsp;%u'
 
   date:
     formats:
@@ -46,6 +46,10 @@ fr:
         create:           "Créer la banque"
         update:           "Modifier la banque"
 
+  locales:
+    en:                   "Anglais"
+    fr:                   "Français"
+
   general:
     cancel:               "Annuler"
     back:                 "Retour"
@@ -56,11 +60,13 @@ fr:
     colon:                " : "
     error:                "erreur"
 
-  navigation:
-    title:                "Miser"
-    welcome:              "Accueil"
-    menu:
-      administration:   "Administration"
+  shared:
+    navigation:
+      title:                "Miser"
+      welcome:              "Accueil"
+      menu:
+        administration:   "Administration"
+        logout:           "Se déconnecter"
 
   banks:
     index:
@@ -107,6 +113,38 @@ fr:
       expenditure:        "Dépense"
       income:             "Revenu"
       transfer:           "Virement"
+  users:
+    index:
+      new:                "Nouvel utilisateur"
+    new:
+      title:              "Création d'utilisateur"
+    edit:
+      title:              "Modification d'utilisateur"
+    create:
+      notice:             "Utilisateur créé"
+    update:
+      notice:             "Utilisateur modifié"
+    destroy:
+      notice:             "Utilisateur supprimé"
+    form:
+      error:              "sur cet utilisateur"
+  sessions:
+    new:
+      name:               "Utilisateur"
+      password:           "Mot de passe"
+      login:              "Se connecter"
+      errors:
+        locale_not_available: "Langue non supportée"
+    destroy:
+      notice:             "Fin de la connexion"
+    create:
+      errors:
+        invalid_user_password: "Utilisateur ou mot de passe invalide"
+
+  welcome:
+    index:
+      notice:             "Connexion nécessaire"
+      final_balance:      "Solde"
 
   activerecord:
     errors:
@@ -118,6 +156,12 @@ fr:
           attributes:
             amount:
               greater_than_or_equal_to: "est inférieur au minimum"
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "et mot de passe sont différents"
+          last_user:        "Impossible de supprimer le dernier utilisateur"
+
     models:
       account:            
         one:              "Compte"
@@ -148,4 +192,8 @@ fr:
         amount:           "Montant"
         transaction_type: "Type"
         date:             "Date"
+      user:
+        name:             "Nom"
+        password:         "Mot de passe"
+        password_confirmation:  "Confirmation mot de passe"
 

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   
   def ensure_a_user_remains
     if User.count.zero?
-      raise "Can't delete last user"
+      raise I18n.t('activerecord.errors.models.user.last_user')
     end
   end
 end

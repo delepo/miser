@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_url, notice: "User #{@user.name} was successfully created." }
+        format.html { redirect_to users_url, notice: t('.notice') }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_url, notice: "User #{@user.name} was successfully updated." }
+        format.html { redirect_to users_url, notice: t('.notice') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,9 +56,9 @@ class UsersController < ApplicationController
   def destroy
     begin
       @user.destroy
-      flash[:notice] = "User #{@user.name} deleted"
+      flash[:notice] = t('.notice')
     rescue StandardError => e
-      flash[:notice] = e.message
+      flash[:alert] = e.message
     end
     respond_to do |format|
       format.html { redirect_to users_url }

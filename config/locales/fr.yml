@@ -195,5 +195,5 @@ fr:
       user:
         name:             "Nom"
         password:         "Mot de passe"
-        password_confirmation:  "Confirmation mot de passe"
+        password_confirmation:  "Confirmation du mot de passe"
 
